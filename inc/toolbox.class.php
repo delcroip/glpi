@@ -2730,6 +2730,19 @@ class Toolbox {
    }
 
    /**
+    * Revert sanitize on given value.
+    *
+    * @param string $value
+    *
+    * @return string
+    */
+   static public function unsanitize(string $value): string {
+      $value = Toolbox::unclean_cross_side_scripting_deep($value);
+      $value = Toolbox::stripslashes_deep($value);
+      return $value;
+   }
+
+   /**
     * Remove accentued characters and return lower case string
     *
     * @param string $string String to handle
